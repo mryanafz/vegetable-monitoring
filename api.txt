@@ -1,0 +1,20 @@
+https://spreadsheets.google.com/feeds/cells/YOURGOOGLESHEETCODE/SHEETPAGENUMBER/public/full?alt=json
+
+1ZOehY8vxpqjDPgvC873-jaPrzH7mTCmo_TgU_ez52t8
+https://spreadsheets.google.com/feeds/cells/1ZOehY8vxpqjDPgvC873-jaPrzH7mTCmo_TgU_ez52t8/1/public/full?alt=json
+
+AIzaSyA3decVFKzCq4MXmwkKGAYQ0Y8XT6mhAww
+
+'https://sheets.googleapis.com/v4/spreadsheets/' + spreadsheet_id + '/values/' + tab_name + '?alt=json&key=' + api_key;
+
+api url
+https://sheets.googleapis.com/v4/spreadsheets/1ZOehY8vxpqjDPgvC873-jaPrzH7mTCmo_TgU_ez52t8/values/Sheet1?alt=json&key=AIzaSyA3decVFKzCq4MXmwkKGAYQ0Y8XT6mhAww
+
+key api
+AIzaSyA3decVFKzCq4MXmwkKGAYQ0Y8XT6mhAww
+
+id sheet
+1d-iuyAGlYHhGUhuuQR_ihI5MnaGUeV_PwgHSj2GGOSc
+
+url submit
+https://script.google.com/macros/s/AKfycbyjrxu-cZp3sJR4KS4idBuST8F8YMb3J6OroTjZyDqitDdsBMwjnbTh0a-_zAm20bFm/exec
