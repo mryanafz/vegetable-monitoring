@@ -41,11 +41,11 @@
             <input name="kelas" type="text" placeholder="Last Name">
             <button type="submit">Send</button>
         </form> -->
-
+        <button id="test" class="btn btn-primary mt-3">refresh</button>
         <div class="table" id="table">
 
         </div>
-        <button id="test">haha</button>
+
     </div>
 
 
@@ -109,8 +109,8 @@
         }
 
         $(document).on('click', '#test', function (e) {
-            console.log('asd')
-            $("#table").html(table)
+
+            getData()
 
         });
 
