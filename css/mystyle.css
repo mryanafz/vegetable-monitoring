@@ -11,3 +11,7 @@ input,
 select {
     border: 0 !important;
 }
+
+html {
+    scroll-behavior: smooth !important;
+}
