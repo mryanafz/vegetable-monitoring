@@ -1,0 +1,13 @@
+.list-hover:hover {
+    background-color: #e3f5c2;
+    transition: 0.3s;
+}
+
+input.disabled {
+    background-color: #e3f5c2 !important;
+}
+
+input,
+select {
+    border: 0 !important;
+}
