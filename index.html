@@ -16,25 +16,46 @@
 <body>
     <h1>Hello, world!</h1>
     <div class="container">
-        <form name="submit-to-google-sheet">
-            <div class="col-md-6">
-                <div class="form-group"></div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nama</label>
-                    <input name="nama" type="text" class="form-control" id="nama" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">NIM</label>
-                    <input name="nim" type="text" class="form-control" id="nim" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Alamat</label>
-                    <input name="kelas" type="text" class="form-control" id="kelas" aria-describedby="emailHelp">
-                </div>
-            </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <form name="submit-to-google-sheet1">
+                    <div class="form-group"></div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Nama</label>
+                        <input name="nama" type="text" class="form-control" id="nama" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">NIM</label>
+                        <input name="nim" type="text" class="form-control" id="nim" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Alamat</label>
+                        <input name="kelas" type="text" class="form-control" id="kelas" aria-describedby="emailHelp">
+                    </div>
 
-            <button type="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
+                    <button type="submit" class="btn btn-primary float-right">Submit</button>
+                </form>
+            </div>
+            <div class="col-sm-6">
+                <form name="submit-to-google-sheet2">
+                    <div class="form-group"></div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Nama</label>
+                        <input name="nama" type="text" class="form-control" id="nama2" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">NIM</label>
+                        <input name="nim" type="text" class="form-control" id="nim2" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Alamat</label>
+                        <input name="kelas" type="text" class="form-control" id="kelas2" aria-describedby="emailHelp">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary float-right">Submit</button>
+                </form>
+            </div>
+        </div>
         <!-- <form name="submit-to-google-sheet">
             <input name="nama" type="text" placeholder="Email" required>
             <input name="nim" type="text" placeholder="First Name">
@@ -42,10 +63,19 @@
             <button type="submit">Send</button>
         </form> -->
         <button id="test" class="btn btn-primary mt-3">refresh</button>
-        <div class="table" id="table">
+        <div class="row">
 
+            <div class="col-sm-6">
+                <div class="table" id="table1">
+
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="table" id="table2">
+
+                </div>
+            </div>
         </div>
-
     </div>
 
 
@@ -59,9 +89,18 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
-        getData()
 
-        function getData() {
+        getData1()
+        getData2()
+
+        $(document).on('click', '#test', function (e) {
+
+            getData1()
+            getData2()
+
+        });
+
+        function getData1() {
             $.ajax({
                 type: "POST", //rest Type
                 dataType: 'jsonp', //mispelled
@@ -69,7 +108,7 @@
                 async: false,
                 contentType: "application/json; charset=utf-8",
                 success: function (msg) {
-                    console.log(msg);
+                    // console.log(msg);
 
                     // let data = new Object();
 
@@ -90,7 +129,6 @@
                     let sortData = new Object();
                     for (i = 1; i < msg.values.length; i++) {
                         sortData[i] = new Object();
-                        console.log(i)
                     }
                     i = 1
                     for (var r = msg.values.length - 1; r > 0; r--) {
@@ -102,19 +140,44 @@
                         }
                         i++
                     }
-                    console.log(sortData)
-                    renderTable(sortData)
+                    // console.log(sortData)
+                    renderTable1(sortData)
+                }
+            });
+        }
+        getData1()
+
+        function getData2() {
+            $.ajax({
+                type: "POST", //rest Type
+                dataType: 'jsonp', //mispelled
+                url: "https://sheets.googleapis.com/v4/spreadsheets/1ZOehY8vxpqjDPgvC873-jaPrzH7mTCmo_TgU_ez52t8/values/Sheet2?alt=json&key=AIzaSyA3decVFKzCq4MXmwkKGAYQ0Y8XT6mhAww",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                success: function (msg) {
+                    // console.log(msg);
+                    let sortData = new Object();
+                    for (i = 1; i < msg.values.length; i++) {
+                        sortData[i] = new Object();
+                    }
+                    i = 1
+                    for (var r = msg.values.length - 1; r > 0; r--) {
+                        // console.log(i)
+                        for (var j in msg.values[0]) {
+                            key = String(msg.values[0][j])
+                            val = msg.values[r][j]
+                            Object.assign(sortData[i], { [key]: val })
+                        }
+                        i++
+                    }
+                    // console.log(sortData)
+                    renderTable2(sortData)
                 }
             });
         }
 
-        $(document).on('click', '#test', function (e) {
 
-            getData()
-
-        });
-
-        function renderTable(data) {
+        function renderTable1(data) {
             table =
                 `<thead>
                         <tr>
@@ -142,20 +205,63 @@
             table += `
                 </tbody>
             </table>`
-            $("#table").html(table)
-
+            $("#table1").html(table)
         }
 
+        function renderTable2(data) {
+            table =
+                `<thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tnggal</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">NIM</th>
+                            <th scope="col">Alamat</th>
+                        </tr>
+                    </thead>
+                    <tbody>`
 
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyjrxu-cZp3sJR4KS4idBuST8F8YMb3J6OroTjZyDqitDdsBMwjnbTh0a-_zAm20bFm/exec'
-        const form = document.forms['submit-to-google-sheet']
+            for (t in data) {
 
-        form.addEventListener('submit', e => {
+                table += `
+                    <tr>
+                        <th scope="row">` + t + `</th>
+                        <td>`+ data[t].timestamp + `</td>
+                        <td>`+ data[t].nama + `</td>
+                        <td>`+ data[t].nim + `</td>
+                        <td>`+ data[t].kelas + `</td>
+                    </tr>`
+            }
+
+            table += `
+                </tbody>
+            </table>`
+            $("#table2").html(table)
+        }
+
+        const scriptURL1 = 'https://script.google.com/macros/s/AKfycbyjrxu-cZp3sJR4KS4idBuST8F8YMb3J6OroTjZyDqitDdsBMwjnbTh0a-_zAm20bFm/exec'
+        const form1 = document.forms['submit-to-google-sheet1']
+
+        form1.addEventListener('submit', e => {
             e.preventDefault()
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            fetch(scriptURL1, { method: 'POST', body: new FormData(form1) })
                 .then(response => {
                     console.log('Success!', response)
-                    getData()
+                    getData1()
+                })
+                .catch(error => console.error('Error!', error.message))
+        })
+
+
+        const scriptURL2 = 'https://script.google.com/macros/s/AKfycbyKXF_3r-2k9mn8TLGP2MoiDcNrdESq6qIEAMzUjRqX4JbbdFiAhyiOAsah67d2xF0/exec'
+        const form2 = document.forms['submit-to-google-sheet2']
+
+        form2.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL2, { method: 'POST', body: new FormData(form2) })
+                .then(response => {
+                    console.log('Success!', response)
+                    getData2()
                 })
                 .catch(error => console.error('Error!', error.message))
         })

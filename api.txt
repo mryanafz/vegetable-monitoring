@@ -16,5 +16,8 @@ AIzaSyA3decVFKzCq4MXmwkKGAYQ0Y8XT6mhAww
 id sheet
 1d-iuyAGlYHhGUhuuQR_ihI5MnaGUeV_PwgHSj2GGOSc
 
-url submit
+url submit 1
 https://script.google.com/macros/s/AKfycbyjrxu-cZp3sJR4KS4idBuST8F8YMb3J6OroTjZyDqitDdsBMwjnbTh0a-_zAm20bFm/exec
+
+url submit 2
+https://script.google.com/macros/s/AKfycbyKXF_3r-2k9mn8TLGP2MoiDcNrdESq6qIEAMzUjRqX4JbbdFiAhyiOAsah67d2xF0/exec
