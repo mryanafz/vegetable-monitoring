@@ -15,3 +15,10 @@ select {
 html {
     scroll-behavior: smooth !important;
 }
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #bdbdbd !important;
+    opacity: 1;
+    /* Firefox */
+}
